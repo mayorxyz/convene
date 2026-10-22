@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convene — TPM Agents | AI Program Coordination</title>
+    <meta name="description" content="Convene is the shared operating system for human-agent organizations. Get people and agents on the same program." />
+    <meta property="og:title" content="Convene — TPM Agents" />
+    <meta property="og:description" content="Build cohesively, as a team. AI-native program coordination for engineering organizations." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#141414" id="theme-color-meta" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; }
+      body { background-color: var(--color-base, #141414); color: var(--color-text-primary, #ffffff); }
+      html[data-theme="light"] body { background-color: var(--color-base, #F8F8F6); color: var(--color-text-primary, #111111); }
+    </style>
+    <script>
+      // Apply theme before first paint to prevent flash
+      (function() {
+        const theme = localStorage.getItem('theme') || 'system';
+        const resolvedTheme = theme === 'system' 
+          ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+          : theme;
+        document.documentElement.setAttribute('data-theme', resolvedTheme);
+        document.documentElement.style.colorScheme = resolvedTheme;
+        const themeColorMeta = document.getElementById('theme-color-meta');
+        if (themeColorMeta) {
+          themeColorMeta.setAttribute('content', resolvedTheme === 'light' ? '#F8F8F6' : '#141414');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

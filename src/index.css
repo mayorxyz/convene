@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* CSS Variables for theming */
+:root {
+  /* Dark theme (default) */
+  --color-base: #141414;
+  --color-elevated: #1c1c1c;
+  --color-card: #202020;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #9A9A9A;
+  --color-text-muted: #6B6B6B;
+  --color-accent-blue: #2F6BFF;
+  --color-accent-orange: #FF7A1A;
+  --color-accent-red: #E5484D;
+  --color-accent-green: #3DD68C;
+  --color-overlay: rgba(20, 20, 20, 0.85);
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-crosshair: rgba(255, 255, 255, 0.15);
+  --color-stroke: rgba(255, 255, 255, 0.25);
+  --color-stroke-blue: rgba(47, 107, 255, 0.4);
+  --color-scrollbar-track: #141414;
+  --color-scrollbar-thumb: #333333;
+  --color-guide-line: rgba(255, 255, 255, 0.03);
+  --color-vortex-glyph: rgba(255, 255, 255, 0.12);
+  --color-vortex-glyph-bright: rgba(255, 255, 255, 0.35);
+  --color-vortex-particle: rgba(255, 255, 255, 0.6);
+  --color-surface-subtle: rgba(255, 255, 255, 0.04);
+  --color-surface-muted: rgba(255, 255, 255, 0.08);
+  --color-surface-strong: rgba(255, 255, 255, 0.15);
+  --color-overlay-strong: rgba(20, 20, 20, 0.85);
+  --color-overlay-mid: rgba(20, 20, 20, 0.6);
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --color-base: #F8F8F6;
+  --color-elevated: #FFFFFF;
+  --color-card: #F1F1EE;
+  --color-hairline: rgba(0, 0, 0, 0.10);
+  --color-text-primary: #111111;
+  --color-text-secondary: #55555B;
+  --color-text-muted: #707078;
+  --color-accent-blue: #2559D6;
+  --color-accent-orange: #C2410C;
+  --color-accent-red: #C92A2F;
+  --color-accent-green: #15803D;
+  --color-overlay: rgba(248, 248, 246, 0.85);
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-crosshair: rgba(0, 0, 0, 0.15);
+  --color-stroke: rgba(0, 0, 0, 0.25);
+  --color-stroke-blue: rgba(47, 107, 255, 0.4);
+  --color-scrollbar-track: #F8F8F6;
+  --color-scrollbar-thumb: #CCCCCC;
+  --color-guide-line: rgba(0, 0, 0, 0.05);
+  --color-vortex-glyph: rgba(0, 0, 0, 0.12);
+  --color-vortex-glyph-bright: rgba(0, 0, 0, 0.35);
+  --color-vortex-particle: rgba(0, 0, 0, 0.6);
+  --color-surface-subtle: rgba(0, 0, 0, 0.03);
+  --color-surface-muted: rgba(0, 0, 0, 0.06);
+  --color-surface-strong: rgba(0, 0, 0, 0.12);
+  --color-overlay-strong: rgba(248, 248, 246, 0.85);
+  --color-overlay-mid: rgba(248, 248, 246, 0.6);
+}
+
+@theme {
+  --color-elevated: var(--color-elevated);
+  --color-card: var(--color-card);
+  --color-hairline: var(--color-hairline);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent-blue: var(--color-accent-blue);
+  --color-accent-orange: var(--color-accent-orange);
+  --color-accent-red: var(--color-accent-red);
+  --color-accent-green: var(--color-accent-green);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+/* Utility classes */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px var(--color-stroke);
+  color: transparent;
+}
+
+.text-stroke-blue {
+  -webkit-text-stroke: 1px var(--color-stroke-blue);
+  color: transparent;
+}
+
+/* Crosshair decorations */
+.crosshair-card {
+  position: relative;
+}
+.crosshair-card::before,
+.crosshair-card::after {
+  content: '+';
+  position: absolute;
+  font-size: 10px;
+  color: var(--color-crosshair);
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+.crosshair-card::before {
+  top: 6px;
+  left: 8px;
+}
+.crosshair-card::after {
+  bottom: 6px;
+  right: 8px;
+}
+
+/* Focus ring */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-blue);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
